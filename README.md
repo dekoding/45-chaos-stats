@@ -1,16 +1,19 @@
-## 45chaos NodeJS API
+## 45-chaos-stats
 
 ### Requirements
 
   * node >= 10.11.0
   * `sequelize-cli` (npm install -g sequelize-cli)
+  * `angular-cli` (npm install -g @angular/cli)
 
 ### Running locally
 
 ```bash
-$> git clone https://github.com/tinyzimmer/45chaos-node-api
-$> cd 45chaos-node-api
-$> npm install
+$> git clone https://github.com/dekoding/45-chaos-stats
+$> cd 45-chaos-stats/ui
+$> npm install # install front-end dependencies
+$> cd ../
+$> npm install # install back-end dependencies
 $> npm start # runs 'sequelize db:migrate' then starts the web server
 ```
 
