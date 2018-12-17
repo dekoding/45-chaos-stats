@@ -1,0 +1,17 @@
+.dittohead-stats {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.dittohead-card {
+    width: 160px;
+}
+
+.dittohead-detail {
+    display: flex;
+    flex-grow: 1;
+    padding: 10px;
+}

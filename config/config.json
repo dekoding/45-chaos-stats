@@ -1,0 +1,20 @@
+{
+  "spreadsheetUrlBase": "https://docs.google.com/spreadsheets/d/1IUwAsVqNzs1TXUs3DQdQEwT8txb5MD7Yps9MGO0JV24/export?format=csv&id=1IUwAsVqNzs1TXUs3DQdQEwT8txb5MD7Yps9MGO0JV24&gid=",
+  "departuresGid": "0",
+  "definitionsGid": "20619410",
+  "vacanciesGid": "769168722",
+  "failuresGid": "355920076",
+  "defaultUpdateInterval": 300000,
+  "development": {
+    "dialect": "sqlite",
+    "storage": "data/devdb.sqlite3",
+    "logging": false
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

@@ -1,0 +1,35 @@
+mat-grid-tile {
+    color: #fff;
+    background-color: #052440;
+    font-family: 'open sans',sans-serif;
+}
+
+mat-grid-tile-header {
+    font-size: 0.8rem;
+}
+
+mat-grid-tile div {
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    color: #00a5cf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.no-bullets {
+    padding-left: 0;
+    position: absolute;
+    left: 16px;
+    top: 36px;
+}
+
+.no-bullets li {
+    list-style: none;
+    padding-left: 0;
+}

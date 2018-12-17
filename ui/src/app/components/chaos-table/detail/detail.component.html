@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>{{data.FirstName}} {{data.LastName}}</h1>
+<div mat-dialog-content (click)="okClick()">
+    <div class="dittohead-detail">
+        <mat-card class="dittohead-card">
+            <img mat-card-image
+                src="https://45chaos-static.s3-us-west-2.amazonaws.com/images/{{data.Image}}.JPG"
+                alt="Photo of {{data.FirstName}} {{data.LastName}}"
+            />
+            <mat-card-content>
+                <p class="upper">
+                    {{data.FirstName}} {{data.LastName}}
+                </p>
+                <p class="upper">
+                    {{data.Position}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+        <div class="dittohead-stats">
+            <mat-list dense>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Affiliation:</span> {{data.Affiliation}}</p>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Hired:</span> {{data.DateHired}}</p>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Date Left:</span> {{data.DateLeft}}</p>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Fired / Resigned:</span> {{data.LeaveType}}</p>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Total Days:</span> {{data.TotalTime}}</p>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Under Trump:</span> {{data.TrumpTime}}</p>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Mooches:</span> {{data.MoochesTime}}</p>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <p><span class="mat-body-strong">Notes:</span> {{data.Notes}}</p>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="okClick()" cdkFocusInitial>Ok</button>
+</div>

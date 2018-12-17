@@ -1,0 +1,6 @@
+.header-image-container {
+    width: 34px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

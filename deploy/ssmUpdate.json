@@ -1,0 +1,20 @@
+{
+    "schemaVersion": "2.2",
+    "description": "Run docker rebuild and replace",
+    "parameters": {},
+    "mainSteps": [
+        {
+            "action": "aws:runShellScript",
+            "name": "rebuildWebContainer",
+            "inputs": {
+                "runCommand": [
+                    "cd /opt/web/45chaos && sudo -u ec2-user git pull",
+                    "cd /opt/web/45chaos && docker build . -t 45chaos --no-cache",
+                    "cd /opt/web && /usr/local/bin/docker-compose down",
+                    "cd /opt/web && /usr/local/bin/docker-compose up -d",
+                    "docker image ls | grep none | awk '{print$3}' | xargs -n1 docker rmi -f"
+                ]
+            }
+        }
+    ]
+}
