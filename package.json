@@ -8,17 +8,17 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
-    "csv-parse": "^3.1.3",
+    "csv-parse": "^3.2.0",
     "debug": "~2.6.9",
-    "dotenv": "^6.1.0",
+    "dotenv": "^6.2.0",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
-    "mysql2": "^1.6.1",
-    "nodemon": "^1.18.4",
+    "mysql2": "^1.6.4",
+    "nodemon": "^1.18.9",
     "request": "^2.88.0",
     "sequelize": "^4.42.0",
-    "sqlite3": "^4.0.2"
+    "sqlite3": "^4.0.4"
   }
 }

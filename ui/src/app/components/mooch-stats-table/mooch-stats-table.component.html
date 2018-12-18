@@ -1,17 +1,37 @@
-<mat-card class="stat-card">
-  <mat-card-header>
-    <mat-card-title>Departures By Type</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <canvas #leaveChart></canvas>
-  </mat-card-content>
-</mat-card>
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+        <mat-card class="grid-card">
+            <mat-card-header>
+                <mat-card-title>Departures By Type</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <canvas #leaveChart></canvas>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-list role="list">
+            <mat-list-item role="listitem" class="mat-elevation-z2">
+                <span>Average Departures per Day</span>
+                <span>1.12 people every 2 days</span>
+            </mat-list-item>
+            <mat-list-item role="listitem" class="mat-elevation-z2">
+                <span>Average Days for Departed Trump Hire/Appointee</span>
+                <span>276.2</span>
+            </mat-list-item>
+            <mat-list-item role="listitem" class="mat-elevation-z2">
+                <span>Average Days for Departed Career Officials</span>
+                <span>212.99</span>
+            </mat-list-item>
+        </mat-list>
+    </mat-grid-tile>
+</mat-grid-list>
 
 <mat-card class="stat-card">
-  <mat-card-header>
-    <mat-card-title>Departures By Affiliation</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
+    <mat-card-header>
+        <mat-card-title>Departures By Affiliation</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
         <canvas #affiliationsChart height="400px"></canvas>
-  </mat-card-content>
+    </mat-card-content>
 </mat-card>

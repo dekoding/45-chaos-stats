@@ -14,6 +14,58 @@ const labelKeys:Object = {
     '?': 'Unknown'
 };
 
+const affiliationKeys:Object = {
+    'State Dept': 'State Department',
+    'WH': 'White House',
+    'FBI': 'Federal Bureau of Investigation',
+    'EPA': 'Environmental Protection Agency',
+    'OPM': 'Office of Personnel Management',
+    'Commerce': 'Department of Commerce',
+    'DHS': 'Department of Homeland Security',
+    'CFPB': 'Consumer Financial Protection Bureau',
+    'Defense': 'Department of Defense',
+    'CIA': 'Central Intelligence Agency',
+    'FWS': 'U.S. Fish and Wildlife Service',
+    'HHS': 'Health and Human Services',
+    'DOJ': 'Department of Justice',
+    'HSAC': 'Homeland Security Advisory Council',
+    'ICE': 'Immigration and Customs',
+    'HUD': 'Department of Housing and Urban Development',
+    'VA': 'Veterans Affairs',
+    'FDIC': 'Federal Deposit Insurance Corporation',
+    'Treasury': 'Department of the Treasury',
+    'USDA': 'U.S. Department of Agriculture',
+    'NASA': 'National Aeronautics and Space Administration',
+    'BIA': 'Bureau of Indian Affairs',
+    'Trump': 'Trump',
+    'Forest Service': 'U.S. Forest Service',
+    'Interior': 'U.S. Department of the Interior',
+    'Elections': 'Federal Elections Commission',
+    'Fed Reserve': 'Federal Reserve',
+    'CDC': 'Centers for Disease Control',
+    'USGS': 'U.S. Geological Survey',
+    'CNCS': 'Corporation for National and Community Service',
+    'NPS': 'National Parks Service',
+    'PACHA': 'Presidential Advisory Council on HIV/AIDS',
+    'DEA': 'Drug Enforcement Agency',
+    'NDC': 'National Diverstiy Coalition',
+    'RNC': 'Republican National Committee',
+    'NIAC': 'National Infrastructure Advisory Council',
+    'PCAH': "President's Committee on the Arts & Humanities",
+    'DEBA': 'DEBA',
+    'AMC': 'American Manufacturing Council',
+    'SPF': 'Strategic and Policy Forum',
+    'DOE': 'Department of Energy',
+    'ITC': 'U.S. International Trade Commission',
+    'Census': 'Census Bureau',
+    'Patent Office': 'U.S. Patent Office',
+    'SPF & AMC': 'SPF & AMC',
+    'NEH': 'National Endowment for the Humanities',
+    'Public Health ': 'Public Health',
+    'AAPI': "President's Advisory Commission on Asian Americans and Pacific Islanders",
+    'Border Patrol': 'Border Patrol'
+};
+
 @Component({
     selector: 'app-mooch-stats-table',
     templateUrl: './mooch-stats-table.component.html',
@@ -120,7 +172,8 @@ export class MoochStatsTableComponent implements OnInit {
 
                 results.affiliationStats.forEach(entry => {
                     affiliationsData.data.push(entry.count);
-                    affiliationsLabels.push(entry.label);
+                    affiliationsLabels.push(affiliationKeys[entry.label]);
+                    console.log(entry.label, affiliationKeys[entry.label]);
                 });
 
                 this.chartOptions.affiliations.config.data.datasets.push(affiliationsData);

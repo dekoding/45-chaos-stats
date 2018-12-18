@@ -23,4 +23,9 @@ router.get('/api/stats/avgrollovertime', statisticsController.avgRolloverTime)
 
 // images
 router.get('/api/images/:id', imageController.sendImage)
+
+// HTML5 routing
+router.get('*', (req, res) => {
+        res.sendFile('index.html', { root: `${__dirname}/../public/` });
+    });
 module.exports = router;
