@@ -4,11 +4,11 @@
 html, body { height: 100%; }
 body {
     margin: 0;
-    margin-top: 64px;
     font-family: fjalla one,sans-serif;
     font-weight: 400;
     line-height: 1.5;
     font-size: 16px;
+    font-size: 100%;
 }
 
 app-header {
@@ -25,6 +25,15 @@ h1, h2, h3, h4, h5, h6 {
 .responsive-image {
     max-width: 100%;
     height: auto;
+}
+/* Departures and Nominations */
+.mat-typography h1.mat-display-1{
+    margin: 30px;
+}
+/* Footer Text */
+.mat-small {
+    font: 400 12px/2em Roboto, "Helvetica Neue", sans-serif!important;
+    padding: 10px;
 }
 
 .mat-button-wrapper {

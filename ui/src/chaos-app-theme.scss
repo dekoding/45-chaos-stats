@@ -50,7 +50,15 @@ $chaos-app-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $chaos-app-theme: mat-light-theme($chaos-app-primary, $chaos-app-accent, $chaos-app-warn);
+// Create a config with the default typography levels.
 
+$custom-typography: mat-typography-config(
+
+  $display-1: mat-typography-level(52px, 48px, 700)
+);
+
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
