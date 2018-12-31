@@ -80,6 +80,11 @@ export class MoochStatsTableComponent implements OnInit {
         public data: DataService
     ) { }
 
+    avgPerDay:string = '';
+    avgTrumpTime:string = '';
+    avgTrumpHireTime:string = '';
+    avgRolloverTime:string = '';
+
     getRandomColors(count:number) {
         const letters:string = '0123456789ABCDEF';
 
@@ -159,7 +164,7 @@ export class MoochStatsTableComponent implements OnInit {
                 this.chartOptions.leaveTypes.config.data.labels = leaveTypesLabels;
 
                 const ctxLeaveTypes = this.leaveChartElem.nativeElement.getContext('2d');
-                ctxLeaveTypes.height = 400;
+                ctxLeaveTypes.height = 800;
 
                 this.charts.leaveTypes = new Chart(this.leaveChartElem.nativeElement, this.chartOptions.leaveTypes.config);
 
@@ -179,11 +184,14 @@ export class MoochStatsTableComponent implements OnInit {
                 this.chartOptions.affiliations.config.data.datasets.push(affiliationsData);
                 this.chartOptions.affiliations.config.data.labels = affiliationsLabels;
 
-
-                const ctxAffiliations = this.affiliationsChartElem.nativeElement.getContext('2d');
-                ctxLeaveTypes.height = 800;
-
                 this.charts.affiliations = new Chart(this.affiliationsChartElem.nativeElement, this.chartOptions.affiliations.config);
             });
+
+        Object.keys(this.data.averages).forEach(type => {
+            this.data.getAverage(type)
+                .subscribe(result => {
+                    this[type] = result;
+                });
+        });
     }
 }

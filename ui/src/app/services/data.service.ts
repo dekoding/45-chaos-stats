@@ -21,6 +21,13 @@ export class DataService {
     definitions:string = './api/definitions';
     stats:string = './api/stats';
 
+    averages = {
+        avgPerDay: './api/stats/perdaystr',
+        avgTrumpTime: './api/stats/avgtrumptime',
+        avgTrumpHireTime: './api/stats/avgtrumphiretime',
+        avgRolloverTime: './api/stats/avgrollovertime'
+    };
+
     dataSource:MatTableDataSource<any>;
 
     getDepartures():Observable<Chaos[]> {
@@ -48,5 +55,10 @@ export class DataService {
     getStats():Observable<Stat> {
         return this.http.get(this.stats)
             .pipe(map((response: Stat) => response));
+    }
+
+    getAverage(type:string):Observable<string> {
+        return this.http.get(this.averages[type], { responseType: 'text' })
+            .pipe(map((response: string) => response));
     }
 }

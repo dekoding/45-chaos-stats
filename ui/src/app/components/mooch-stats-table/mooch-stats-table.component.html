@@ -12,16 +12,16 @@
     <mat-grid-tile>
         <mat-list role="list">
             <mat-list-item role="listitem" class="mat-elevation-z2">
-                <span>Average Departures per Day</span>
-                <span>1.12 people every 2 days</span>
+                <p mat-line>Average Departures per Day:</p>
+                <h4 mat-line><strong>{{avgPerDay}}</strong></h4>
             </mat-list-item>
             <mat-list-item role="listitem" class="mat-elevation-z2">
-                <span>Average Days for Departed Trump Hire/Appointee</span>
-                <span>276.2</span>
+                <p mat-line>Average Days for Departed Trump Hire/Appointee:</p>
+                <h4 mat-line><strong>{{avgTrumpHireTime}}</strong></h4>
             </mat-list-item>
             <mat-list-item role="listitem" class="mat-elevation-z2">
-                <span>Average Days for Departed Career Officials</span>
-                <span>212.99</span>
+                <p mat-line>Average Days for Departed Career Officials:</p>
+                <h4 mat-line><strong>{{avgRolloverTime}}</strong></h4>
             </mat-list-item>
         </mat-list>
     </mat-grid-tile>
