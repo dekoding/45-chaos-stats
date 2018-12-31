@@ -1,2 +1,5 @@
 ui/node_modules
 ui/package-lock.json
+node_modules
+data/
+public/
