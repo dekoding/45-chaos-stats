@@ -1,25 +1,80 @@
 <div class="main-image">
     <section class="mat-typography">
-        <h1 class="mat-display-1">Table Definitions</h1>
-        <p>A lexicon of incompetence and corruption</p>
+        <h1 class="mat-display-1">FAQs</h1>
+        <p>Get smart answers about the dumbest of presidents</p>
     </section>
 </div>
 
-<div class="table-container mat-elevation-z8">
-    <table mat-table matSort #table [dataSource]="dataSource">
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+    <mat-tab label="Questions about the data">
+        <mat-card>
+            <h3 class="mat-h3">What does <strong>R-UP</strong> stand for?</h3>
+            <p class="mat-body">
+                Resigned under pressure. This indicates the individual left because they were forced out, either by superiors or by investigations into their conduct.
+            </p>
+        </mat-card>
+        <mat-card>
+            <h3 class="mat-h3">What is a mooch?</h3>
+            <p class="mat-body">
+                A mooch is the period of time between the hiring and firing of former Communications Director Anthony Scaramucci. Generally, the most used and accepted conversion is 1 mooch = 10 days. However, it can be argued that Scaramucci actually served 11 days. Due to the prevalence of the 10 day conversion, I decided to use it for this list.
+            </p>
+        </mat-card>
+        <mat-card>
+            <h3 class="mat-h3">Who is included in the list?</h3>
+            <p class="mat-body">
+                Anyone in a high-level position who gets paid federal money and influences government policy. There is some subjectivity involved. Additionally, there is an inherent sampling bias: only departures noticed by the media get included.
+            </p>
+        </mat-card>
+        <mat-card>
+            <h3 class="mat-h3">How precise is the data?</h3>
+            <p class="mat-body">
+                As precise as possible. In some instances, an exact date of departure could not be identified. In these situations, I either assigned the publishing date of the article announcing the staff change or I assigned the middle of the month, depending on which option seemed most appropriate in context.
+            </p>
+        </mat-card>
+        <mat-card>
+            <h3 class="mat-h3">What if an individual held more than one position in the Trump administration?</h3>
+            <p class="mat-body">
+                Time spent in previous positions are not included; only the time spent in the most recent position is counted. This is because it would get too complicated to list time in multiple positions for a single individual.
+            </p>
+            <p class="mat-body">
+                If an individual held two positions concurrently, the maximum time span is counted. For instance, Individual A held position 1 from March to December, as well as position 2 from June to December. Thus, Individual A’s time in position would be from March to December. The two concurrent roles would be listed in the “position” column.
+            </p>
+        </mat-card>
+        <mat-card>
+            <h3 class="mat-h3">Why are some departure dates in the future?</h3>
+            <p class="mat-body">
+                Some individuals announced their resignation, effective at a future date. This date is listed as their departure date, even if they are still serving.
+            </p>
+        </mat-card>
+        <mat-card>
+            <h3 class="mat-h3">Can I be notified when the list is updated?</h3>
+            <p class="mat-body">
+                All updates are posted to /r/45chaos (<a href="https://www.reddit.com/r/45chaos/" target="_blank">https://www.reddit.com/r/45chaos/</a>)
+            </p>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Definitions">
+            <div class="table-container mat-elevation-z8">
+                <h3 class="mat-h3">
+                    A lexicon of incompetence and corruption
+                </h3>
 
-        <ng-container matColumnDef="label">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Term </th>
-          <td mat-cell *matCellDef="let element"> {{element.label}} </td>
-        </ng-container>
+                <table mat-table matSort #table [dataSource]="dataSource">
 
-        <ng-container matColumnDef="explanation">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Definition </th>
-          <td mat-cell *matCellDef="let element"> {{element.explanation}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="label">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Term </th>
+                      <td mat-cell *matCellDef="let element"> {{element.label}} </td>
+                    </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></tr>
+                    <ng-container matColumnDef="explanation">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Definition </th>
+                      <td mat-cell *matCellDef="let element"> {{element.explanation}} </td>
+                    </ng-container>
 
-    </table>
-</div>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></tr>
+
+                </table>
+            </div>
+    </mat-tab>
+</mat-tab-group>

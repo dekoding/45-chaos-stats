@@ -55,10 +55,12 @@ import { DetailComponent } from './components/chaos-table/detail/detail.componen
 import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
-    { path: 'keys', component: DefinitionsTableComponent },
+    { path: 'keys', redirectTo: '/faqs', pathMatch:'full' }, // Legacy bookmarks
+    { path: 'faqs', component: DefinitionsTableComponent },
     { path: 'mooches', component: MoochCalculatorComponent },
     { path: 'stats', component: MoochStatsTableComponent },
-    { path: '', component: ChaosTableComponent }
+    { path: '', component: ChaosTableComponent },
+    { path: "**", redirectTo: '', pathMatch:'full' }
 ];
 
 @NgModule({

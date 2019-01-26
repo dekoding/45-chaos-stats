@@ -31,7 +31,10 @@
     height: calc(100% - 70px);
 }
 
-
+.data-container {
+    margin: 15px;
+    padding-top: 24px;
+}
 
 @media all and (min-width: 960px) and (max-width: 1199px) {
   .main-image h1{

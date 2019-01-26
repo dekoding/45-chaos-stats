@@ -1,37 +1,45 @@
-<mat-grid-list cols="2" rowHeight="1:1">
-    <mat-grid-tile>
-        <mat-card class="grid-card">
-            <mat-card-header>
-                <mat-card-title>Departures By Type</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <canvas #leaveChart></canvas>
-            </mat-card-content>
-        </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <mat-list role="list">
-            <mat-list-item role="listitem" class="mat-elevation-z2">
-                <p mat-line>Average Departures per Day:</p>
-                <h4 mat-line><strong>{{avgPerDay}}</strong></h4>
-            </mat-list-item>
-            <mat-list-item role="listitem" class="mat-elevation-z2">
-                <p mat-line>Average Days for Departed Trump Hire/Appointee:</p>
-                <h4 mat-line><strong>{{avgTrumpHireTime}}</strong></h4>
-            </mat-list-item>
-            <mat-list-item role="listitem" class="mat-elevation-z2">
-                <p mat-line>Average Days for Departed Career Officials:</p>
-                <h4 mat-line><strong>{{avgRolloverTime}}</strong></h4>
-            </mat-list-item>
-        </mat-list>
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="main-image">
+    <section class="mat-typography">
+        <h1 class="mat-display-1">Stats & Charts</h1>
+        <p>Corruption by the Numbers</p>
+    </section>
+</div>
+<div class="data-container mat-elevation-z8">
+    <mat-grid-list cols="2" rowHeight="1:1">
+        <mat-grid-tile>
+            <mat-card class="grid-card">
+                <mat-card-header>
+                    <mat-card-title>Departures By Type</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <canvas #leaveChart></canvas>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-list role="list">
+                <mat-list-item role="listitem" class="mat-elevation-z2">
+                    <p mat-line>Average Departures per Day:</p>
+                    <h4 mat-line><strong>{{avgPerDay}}</strong></h4>
+                </mat-list-item>
+                <mat-list-item role="listitem" class="mat-elevation-z2">
+                    <p mat-line>Average Days for Departed Trump Hire/Appointee:</p>
+                    <h4 mat-line><strong>{{avgTrumpHireTime}}</strong></h4>
+                </mat-list-item>
+                <mat-list-item role="listitem" class="mat-elevation-z2">
+                    <p mat-line>Average Days for Departed Career Officials:</p>
+                    <h4 mat-line><strong>{{avgRolloverTime}}</strong></h4>
+                </mat-list-item>
+            </mat-list>
+        </mat-grid-tile>
+    </mat-grid-list>
 
-<mat-card class="stat-card">
-    <mat-card-header>
-        <mat-card-title>Departures By Affiliation</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <canvas #affiliationsChart height="400px"></canvas>
-    </mat-card-content>
-</mat-card>
+    <mat-card class="stat-card">
+        <mat-card-header>
+            <mat-card-title>Departures By Affiliation</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <canvas #affiliationsChart height="400px"></canvas>
+        </mat-card-content>
+    </mat-card>
+</div>
