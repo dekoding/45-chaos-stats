@@ -37,6 +37,8 @@
 
 .table-container {
     overflow-x:auto;
+    margin: 15px;
+    padding-top: 24px;
 }
 
 table {
