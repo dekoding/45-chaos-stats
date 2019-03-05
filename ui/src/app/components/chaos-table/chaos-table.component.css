@@ -45,6 +45,10 @@ table {
     width: 100%;
 }
 
+.spaced {
+    margin: 0 1em 0 1em;
+}
+
 .element-row {
   position: relative;
 }
