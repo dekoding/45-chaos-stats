@@ -1,7 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable, of } from 'rxjs';
-import { MatPaginator, MatTableDataSource, MatSort, MatDialog, MatDialogRef } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatSort, MatDialog } from '@angular/material';
 
 import { Chaos } from '../../interfaces/chaos';
 import { DataService } from '../../services/data.service';
@@ -26,6 +24,13 @@ export class ChaosTableComponent implements OnInit {
                 this.data.dataSource = new MatTableDataSource<any>(this.list);
                 this.data.dataSource.sort = this.sort;
                 this.data.dataSource.paginator = this.paginator;
+                this.data.dataSource.sortingDataAccessor = (item, property) => {
+                    switch (property) {
+                        case 'DateHired': return new Date(item.DateHired);
+                        case 'DateLeft': return new Date(item.DateLeft);
+                        default: return item[property];
+                    }
+                };
                 this.data.dataSource.filterPredicate = (data: Chaos, filter: string) => {
                     let match = false;
                     Object.entries(data).forEach(([key, value]) => {
