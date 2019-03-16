@@ -33,8 +33,13 @@
           <td mat-cell *matCellDef="let element"> {{element.Position}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="HiredUnderTrump">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="spaced"> Trump Hire? </th>
+          <td mat-cell *matCellDef="let element" style="text-align:center;"> {{element.HiredUnderTrump}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="DateHired">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Hired </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="spaced"> Hired </th>
           <td mat-cell *matCellDef="let element"> {{element.DateHired}} </td>
         </ng-container>
 

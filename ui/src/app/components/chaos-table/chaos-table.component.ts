@@ -55,6 +55,7 @@ export class ChaosTableComponent implements OnInit {
         'LastName',
         'Affiliation',
         'Position',
+        'HiredUnderTrump',
         'DateHired',
         'DateLeft',
         'TotalTime',
@@ -63,11 +64,8 @@ export class ChaosTableComponent implements OnInit {
         'LeaveType'
     ];
 
-    isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
-    expandedElement: any;
-
     openDialog(element: Chaos): void {
-        const dialogRef = this.dialog.open(DetailComponent, {
+        this.dialog.open(DetailComponent, {
             width: '80%',
             data: element
         });

@@ -4,6 +4,7 @@ export interface Chaos {
     TrumpTime: number,
     DateLeft: string,
     DateHired: string,
+    HiredUnderTrump?: string,
     Affiliation: string,
     LastName: string,
     Sources: string,

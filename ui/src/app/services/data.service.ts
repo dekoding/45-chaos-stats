@@ -21,6 +21,8 @@ export class DataService {
     definitions:string = './api/definitions';
     stats:string = './api/stats';
 
+    startOfMadness:number = new Date(Date.parse('01/20/2017')).getTime();
+
     averages = {
         avgPerDay: './api/stats/perdaystr',
         avgTrumpTime: './api/stats/avgtrumptime',
@@ -32,7 +34,17 @@ export class DataService {
 
     getDepartures():Observable<Chaos[]> {
         return this.http.get(this.departures)
-            .pipe(map((response: Chaos[]) => response));
+            .pipe(map((response: Chaos[]) => {
+                response.forEach(chaos => {
+                    const hireTime:number = new Date(Date.parse(chaos.DateHired)).getTime();
+                    if (hireTime > this.startOfMadness) {
+                        chaos.HiredUnderTrump = 'Y';
+                    } else {
+                        chaos.HiredUnderTrump = 'N';
+                    }
+                });
+                return response;
+            }));
     }
 
     getDefinitions():Observable<Definition[]> {
