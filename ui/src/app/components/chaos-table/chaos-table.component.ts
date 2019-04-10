@@ -28,6 +28,9 @@ export class ChaosTableComponent implements OnInit {
                     switch (property) {
                         case 'DateHired': return new Date(item.DateHired);
                         case 'DateLeft': return new Date(item.DateLeft);
+                        case 'TotalTime': return +item.TotalTime;
+                        case 'TrumpTime': return +item.TrumpTime;
+                        case 'MootchesTime': return +item.MoochesTime;
                         default: return item[property];
                     }
                 };

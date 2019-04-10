@@ -36,6 +36,7 @@ export class DataService {
         return this.http.get(this.departures)
             .pipe(map((response: Chaos[]) => {
                 response.forEach(chaos => {
+                    chaos.TotalTime = parseInt(String(chaos.TotalTime).replace(',',''));
                     const hireTime:number = new Date(Date.parse(chaos.DateHired)).getTime();
                     if (hireTime > this.startOfMadness) {
                         chaos.HiredUnderTrump = 'Y';
