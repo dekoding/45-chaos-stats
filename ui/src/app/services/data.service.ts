@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Chaos } from '../interfaces/chaos';
-import { Definition } from '../interfaces/definition';
+import { IDefinitionRecord } from '../../../../src/app/interfaces/definition-record';
 import { Stat } from '../interfaces/stat';
 
 @Injectable({
@@ -48,20 +49,10 @@ export class DataService {
             }));
     }
 
-    getDefinitions():Observable<Definition[]> {
+    getDefinitions():Observable<IDefinitionRecord[]> {
         return this.http.get(this.definitions)
-            .pipe(map((response:any[]) => {
-                const result:Definition[] = [];
-                const keys:string[] = Object.keys(response);
-
-                keys.forEach(key => {
-                    const label = key;
-                    const explanation = response[key];
-
-                    result.push({ label, explanation });
-                });
-
-                return result;
+            .pipe(map((response:IDefinitionRecord[]) => {
+                return response;
             }));
     }
 

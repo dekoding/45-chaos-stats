@@ -1,9 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable, of } from 'rxjs';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
-import { Definition } from '../../interfaces/definition';
+import { IDefinitionRecord } from '../../../../../src/app/interfaces/definition-record';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -20,18 +21,20 @@ export class DefinitionsTableComponent implements OnInit {
   ngOnInit() {
       this.data.getDefinitions()
           .subscribe(results => {
-              results.forEach(element => this.list.push(element));
-              this.dataSource = new MatTableDataSource<any>(this.list);
+              results.forEach(element => {
+                  this.list.push(element);
+              });
+              this.dataSource = new MatTableDataSource<IDefinitionRecord>(this.list);
               this.dataSource.sort = this.sort;
           });
   }
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
 
-  list:any[] = [];
+  list:IDefinitionRecord[] = [];
 
-  dataSource:MatTableDataSource<any>;
+  dataSource:MatTableDataSource<IDefinitionRecord>;
 
-  displayedColumns = [ 'label', 'explanation' ];
+  displayedColumns = [ 'Name', 'Definition' ];
 
 }
