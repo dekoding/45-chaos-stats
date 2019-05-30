@@ -1,10 +1,7 @@
 import redis from "ioredis";
 import base from "./config.json";
 
-const client = new redis({
-    port: base.redis.port,
-    host: base.redis.host
-});
+const client = new redis(base.redis);
 
 if (process.env.UPDATE_INTERVAL) {
     base.defaultUpdateInterval = parseInt(process.env.UPDATE_INTERVAL, 10);
