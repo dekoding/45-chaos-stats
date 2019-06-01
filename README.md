@@ -2,8 +2,7 @@
 
 ### Requirements
 
-  * node >= 10.11.0
-  * `sequelize-cli` (npm install -g sequelize-cli)
+  * node >= 12.0.0
   * `angular-cli` (npm install -g @angular/cli)
 
 ### Running locally
@@ -14,29 +13,8 @@ $> cd 45-chaos-stats/ui
 $> npm install # install front-end dependencies
 $> cd ../
 $> npm install # install back-end dependencies
-$> npm start # runs 'sequelize db:migrate' then starts the web server
+$> npm start # runs tsc and tslint, then starts the web server
 ```
-
-#### Optional .env
-
-Some configurations can be modified with a `.env` file in the root of the directory.
-Currently the following configuration options are available (with shown values at their default):
-
-```bash
-NODE_ENV=development
-PORT=3000
-UPDATE_INTERVAL=300000 # in milliseconds (default: 5 minutes)
-```
-
-#### Using Docker
-
-You can also use Docker to build and run the API.
-
-```bash
-$> docker build . -t mooch-api
-$> docker run --rm -p 3000:3000 mooch-api
-```
-
 ### Routes
 
 The following routes are currently available.

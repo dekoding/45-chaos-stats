@@ -1,0 +1,12 @@
+{
+    "DEPARTURES": "/api/departures",
+    "DEFINITIONS": "/api/definitions",
+    "STATS": "/api/stats",
+    "STATS_PER_DAY": "/api/stats/perdaystr",
+    "AFFILIATIONS": "/api/stats/affiliations",
+    "AVG_TRUMP_TIME": "/api/stats/avgtrumptime",
+    "LEAVE_TYPES": "/api/stats/leavetypes",
+    "AVG_TRUMP_HIRE_TIME": "/api/stats/avgtrumphiretime",
+    "AVG_ROLLOVER_TIME": "/api/stats/avgrollovertime",
+    "IMAGES": "/api/images/:id"
+}

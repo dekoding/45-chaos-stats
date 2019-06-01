@@ -46,10 +46,14 @@ table {
 }
 
 .spaced {
-    margin: 0 1em 0 1em;
+    padding: 0 1em 0 1em;
 }
 
-.element-row {
+.right {
+    text-align: end;
+}
+
+/* .element-row {
   position: relative;
 }
 
@@ -63,7 +67,7 @@ table {
 
 .element-row.expanded {
   border-bottom-color: transparent;
-}
+} */
 
 .upper {
     color: #00A5CF;
@@ -76,29 +80,6 @@ table {
     align-items: center;
 }
 
-.dittohead-detail {
-    display: flex;
-    flex-grow: 1;
-    padding: 10px;
-}
-
-.dittohead-container {
-    display: flex;
-    padding: 15px;
-}
-
-.dittohead-stats {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-start;
-    margin-left: 10px;
-    flex-grow: 1;
-}
-
-.dittohead-card {
-    width: 180px;
-}
-
 .dittohead img {
     width: 65px;
     min-width:65px;
@@ -106,13 +87,6 @@ table {
     margin: 5px 10px 5px 0;
     border-radius: 50%;
 }
-
-.dittohead-portrait {
-    display: flex;
-    align-items: center;
-    width: 60px;
-}
-
 
 @media all and (min-width: 960px) and (max-width: 1199px) {
   .main-image h1{

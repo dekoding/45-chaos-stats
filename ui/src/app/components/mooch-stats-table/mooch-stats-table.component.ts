@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable, of } from 'rxjs';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Stat, StatEntry } from '../../interfaces/stat';
 import { DataService } from '../../services/data.service';
@@ -40,6 +40,7 @@ const affiliationKeys:Object = {
     'Trump': 'Trump',
     'Forest Service': 'U.S. Forest Service',
     'Interior': 'U.S. Department of the Interior',
+    'Dept of Interior': 'U.S. Department of the Interior', // Dupe
     'Elections': 'Federal Elections Commission',
     'Fed Reserve': 'Federal Reserve',
     'CDC': 'Centers for Disease Control',
@@ -63,7 +64,10 @@ const affiliationKeys:Object = {
     'NEH': 'National Endowment for the Humanities',
     'Public Health ': 'Public Health',
     'AAPI': "President's Advisory Commission on Asian Americans and Pacific Islanders",
-    'Border Patrol': 'Border Patrol'
+    'Border Patrol': 'Border Patrol',
+    'FDA': 'U.S. Food and Drug Administration',
+    'FEMA': 'Federal Emergency Management Agency',
+    'Labor': 'U.S. Department of Labor'
 };
 
 @Component({
@@ -72,8 +76,8 @@ const affiliationKeys:Object = {
     styleUrls: ['./mooch-stats-table.component.css']
 })
 export class MoochStatsTableComponent implements OnInit {
-    @ViewChild('leaveChart') leaveChartElem: ElementRef;
-    @ViewChild('affiliationsChart') affiliationsChartElem: ElementRef;
+    @ViewChild('leaveChart', {static: false}) leaveChartElem: ElementRef;
+    @ViewChild('affiliationsChart', {static: false}) affiliationsChartElem: ElementRef;
 
     constructor(
         public renderer: Renderer2,
@@ -101,10 +105,8 @@ export class MoochStatsTableComponent implements OnInit {
         return(colors);
     }
 
-    charts = {
-        leaveTypes: Chart,
-        affiliations: Chart
-    };
+    leaveTypesChart:Chart;
+    affiliationsChart:Chart;
 
     chartOptions = {
         leaveTypes: {
@@ -144,8 +146,18 @@ export class MoochStatsTableComponent implements OnInit {
     ngOnInit() {
         this.data.getStats()
             .subscribe(results => {
-                this.leaveTypes = results.leaveTypes;
-                this.affiliations = results.affiliationStats;
+                this.leaveTypes = results.leaveTypes.sort((a,b) => {
+                    if (a.count < b.count) {
+                        return 1;
+                    }
+                    return -1;
+                });
+                this.affiliations = results.affiliationStats.sort((a,b) => {
+                    if (a.count < b.count) {
+                        return 1;
+                    }
+                    return -1;
+                });
 
                 const leaveTypesData = {
                     data: [],
@@ -166,7 +178,7 @@ export class MoochStatsTableComponent implements OnInit {
                 const ctxLeaveTypes = this.leaveChartElem.nativeElement.getContext('2d');
                 ctxLeaveTypes.height = 800;
 
-                this.charts.leaveTypes = new Chart(this.leaveChartElem.nativeElement, this.chartOptions.leaveTypes.config);
+                this.leaveTypesChart = new Chart(this.leaveChartElem.nativeElement, this.chartOptions.leaveTypes.config);
 
                 const affiliationsData = {
                     data: [],
@@ -178,13 +190,12 @@ export class MoochStatsTableComponent implements OnInit {
                 results.affiliationStats.forEach(entry => {
                     affiliationsData.data.push(entry.count);
                     affiliationsLabels.push(affiliationKeys[entry.label]);
-                    console.log(entry.label, affiliationKeys[entry.label]);
                 });
 
                 this.chartOptions.affiliations.config.data.datasets.push(affiliationsData);
                 this.chartOptions.affiliations.config.data.labels = affiliationsLabels;
 
-                this.charts.affiliations = new Chart(this.affiliationsChartElem.nativeElement, this.chartOptions.affiliations.config);
+                this.affiliationsChart = new Chart(this.affiliationsChartElem.nativeElement, this.chartOptions.affiliations.config);
             });
 
         Object.keys(this.data.averages).forEach(type => {

@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Chaos } from '../interfaces/chaos';
-import { Definition } from '../interfaces/definition';
+import { IDefinitionRecord } from '../../../../src/app/interfaces/definition-record';
 import { Stat } from '../interfaces/stat';
 
 @Injectable({
@@ -21,6 +22,8 @@ export class DataService {
     definitions:string = './api/definitions';
     stats:string = './api/stats';
 
+    startOfMadness:number = new Date(Date.parse('01/20/2017')).getTime();
+
     averages = {
         avgPerDay: './api/stats/perdaystr',
         avgTrumpTime: './api/stats/avgtrumptime',
@@ -32,23 +35,24 @@ export class DataService {
 
     getDepartures():Observable<Chaos[]> {
         return this.http.get(this.departures)
-            .pipe(map((response: Chaos[]) => response));
+            .pipe(map((response: Chaos[]) => {
+                response.forEach(chaos => {
+                    chaos.TotalTime = parseInt(String(chaos.TotalTime).replace(',',''));
+                    const hireTime:number = new Date(Date.parse(chaos.DateHired)).getTime();
+                    if (hireTime > this.startOfMadness) {
+                        chaos.HiredUnderTrump = 'Y';
+                    } else {
+                        chaos.HiredUnderTrump = 'N';
+                    }
+                });
+                return response;
+            }));
     }
 
-    getDefinitions():Observable<Definition[]> {
+    getDefinitions():Observable<IDefinitionRecord[]> {
         return this.http.get(this.definitions)
-            .pipe(map((response:any[]) => {
-                const result:Definition[] = [];
-                const keys:string[] = Object.keys(response);
-
-                keys.forEach(key => {
-                    const label = key;
-                    const explanation = response[key];
-
-                    result.push({ label, explanation });
-                });
-
-                return result;
+            .pipe(map((response:IDefinitionRecord[]) => {
+                return response;
             }));
     }
 

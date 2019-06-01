@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
@@ -6,15 +6,9 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
     templateUrl: './mooch-calculator.component.html',
     styleUrls: ['./mooch-calculator.component.css']
 })
-export class MoochCalculatorComponent implements OnInit {
+export class MoochCalculatorComponent {
 
     constructor() { }
-
-    ngOnInit() {
-    }
-    calculateMooches(event:any) {
-        console.log(event);
-    }
 
     parseDate(str) {
         const mdy = str.split('/');
@@ -30,7 +24,6 @@ export class MoochCalculatorComponent implements OnInit {
         // Take the difference between the dates and divide by milliseconds per day.
         // Round to nearest whole number to deal with DST.
         const days = Math.round((second-first)/(1000*60*60*24));
-        console.log(days / 10);
         if (now > input && days !== 0) {
             this.moochCount = `That was ${days / 10} Mooches ago!`;
         } else if (now < input && days !== 0) {
