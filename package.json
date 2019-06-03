@@ -16,7 +16,7 @@
     "dependencies": {
         "@types/cookie-parser": "^1.4.1",
         "@types/morgan": "^1.7.35",
-        "axios": "^0.18.0",
+        "axios": "^0.18.1",
         "cookie-parser": "^1.4.4",
         "csv-parse": "^4.4.1",
         "express": "^4.17.0",
