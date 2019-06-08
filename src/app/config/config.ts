@@ -1,6 +1,10 @@
 import redis from "ioredis";
 import base from "./config.json";
 
+// Set globally accessible constants (avoids repetition)
+const trumpInaugural: Date = new Date(Date.parse("2017-01-20"));
+const oneDay: number = 24 * 60 * 60 * 1000;
+
 const client = new redis(base.redis);
 
 if (process.env.UPDATE_INTERVAL) {
@@ -21,4 +25,4 @@ if (process.env.PORT) {
     }
 }
 
-export default { base, port, client };
+export default { base, port, client, trumpInaugural, oneDay };

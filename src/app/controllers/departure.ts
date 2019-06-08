@@ -2,10 +2,8 @@ import { Request, Response } from "express";
 import config from "../config/config";
 import { IDepartureRecord, IDepartureRecordRaw } from "../interfaces/departure-record";
 import { toTitleCase } from "../lib/utilities";
-const { client } = config;
-
-const trumpInaugural: Date = new Date(Date.parse("2017-01-20"));
-const oneDay: number = 24 * 60 * 60 * 1000;
+import { ImageController } from "./images";
+const { client, trumpInaugural, oneDay } = config;
 
 const getDeparturesFromCache = async () => {
     const keys = await client.keys("Departure-*");
@@ -92,6 +90,11 @@ export const DepartureController = {
             } catch (err) {
                 // Record is not in Redis. Add it.
                 await client.set(key, jsonRecord);
+            }
+
+            const imageExists = await ImageController.checkImage(record.Image);
+            if (!imageExists) {
+                await ImageController.getImage(record.Image);
             }
         });
     },

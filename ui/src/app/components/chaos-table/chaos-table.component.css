@@ -41,6 +41,11 @@
     padding-top: 24px;
 }
 
+.pagination-toggle {
+    float: right;
+    margin-right: 15px;
+}
+
 table {
     width: 100%;
 }
