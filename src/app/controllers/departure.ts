@@ -3,10 +3,7 @@ import config from "../config/config";
 import { IDepartureRecord, IDepartureRecordRaw } from "../interfaces/departure-record";
 import { toTitleCase } from "../lib/utilities";
 import { ImageController } from "./images";
-const { client } = config;
-
-const trumpInaugural: Date = new Date(Date.parse("2017-01-20"));
-const oneDay: number = 24 * 60 * 60 * 1000;
+const { client, trumpInaugural, oneDay } = config;
 
 const getDeparturesFromCache = async () => {
     const keys = await client.keys("Departure-*");
