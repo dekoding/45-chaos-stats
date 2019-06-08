@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { Request, Response } from "express";
 import fs, { WriteStream } from "fs";
 import path from "path";
@@ -28,7 +28,7 @@ const downloadImage = async (image: string) => {
             } else {
                 return new Promise((resolve) => { resolve(false); });
             }
-        }).catch ((err) => {
+        }).catch (() => {
             return new Promise((resolve) => { resolve(false); });
         });
 };
