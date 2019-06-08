@@ -26,7 +26,8 @@ export class ChaosTableComponent implements OnInit {
                 results.forEach(element => this.list.push(element));
                 this.data.dataSource = new MatTableDataSource<any>(this.list);
                 this.data.dataSource.sort = this.sort;
-                this.data.dataSource.paginator = this.paginator;
+                //this.data.dataSource.paginator = this.paginator;
+                this.data.dataSource.paginator = null;
                 this.data.dataSource.sortingDataAccessor = (item, property) => {
                     switch (property) {
                         case 'DateHired': return new Date(item.DateHired);
@@ -56,6 +57,18 @@ export class ChaosTableComponent implements OnInit {
     @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
     list:any[] = [];
+
+    usePagination:boolean = false;
+
+    togglePagination() {
+        if (this.usePagination) {
+            this.data.dataSource.paginator = null;
+            this.usePagination = false;
+        } else {
+            this.data.dataSource.paginator = this.paginator;
+            this.usePagination = true;
+        }
+    }
 
     displayedColumns = [
         'LastName',

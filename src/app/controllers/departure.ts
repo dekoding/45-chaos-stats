@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import config from "../config/config";
 import { IDepartureRecord, IDepartureRecordRaw } from "../interfaces/departure-record";
 import { toTitleCase } from "../lib/utilities";
+import { ImageController } from "./images";
 const { client } = config;
 
 const trumpInaugural: Date = new Date(Date.parse("2017-01-20"));
@@ -92,6 +93,11 @@ export const DepartureController = {
             } catch (err) {
                 // Record is not in Redis. Add it.
                 await client.set(key, jsonRecord);
+            }
+
+            const imageExists = await ImageController.checkImage(record.Image);
+            if (!imageExists) {
+                await ImageController.getImage(record.Image);
             }
         });
     },
