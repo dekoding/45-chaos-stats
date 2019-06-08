@@ -5,7 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "frontend": "cd ui && npm install && ng build --prod=true",
-        "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+        "prebuild": "npm install && tslint -c tslint.json -p tsconfig.json --fix",
         "build": "tsc && npm run frontend",
         "prestart": "npm run build",
         "start": "node .",
