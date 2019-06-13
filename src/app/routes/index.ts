@@ -4,8 +4,8 @@ const router = express.Router();
 import {
     DefinitionController,
     DepartureController,
-    StatisticsController,
-    ImageController
+    ImageController,
+    StatisticsController
 } from "../controllers";
 
 import routes from "../config/routes.json";
