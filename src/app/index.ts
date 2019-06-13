@@ -68,11 +68,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", router);
 
-app.use((req, res, next) => {
+app.use((_req, _res, next) => {
     next(createError(404));
 });
 
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};

@@ -68,7 +68,7 @@ export const DepartureController = {
         const records = await getDeparturesFromCache();
         return records;
     },
-    async list(req: Request, res: Response) {
+    async list(_req: Request, res: Response) {
         try {
             const records = await getDeparturesFromCache();
             res.status(200).json(records);
