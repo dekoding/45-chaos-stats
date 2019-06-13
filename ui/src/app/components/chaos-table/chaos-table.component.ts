@@ -34,7 +34,7 @@ export class ChaosTableComponent implements OnInit {
                         case 'DateLeft': return new Date(item.DateLeft);
                         case 'TotalTime': return +item.TotalTime;
                         case 'TrumpTime': return +item.TrumpTime;
-                        case 'MootchesTime': return +item.MoochesTime;
+                        case 'MoochesTime': return +item.MoochesTime;
                         default: return item[property];
                     }
                 };
