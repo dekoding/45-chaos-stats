@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
-import config from "../config/config";
 import { IDepartureRecord } from "../interfaces/departure-record";
 import { IStatsRecord } from "../interfaces/stats-record";
 import { DepartureController } from "./departure";
-const { client } = config;
 
 const trumpInaugural: Date = new Date(Date.parse("2017-01-20"));
 const oneDay: number = 24 * 60 * 60 * 1000;
@@ -167,7 +165,7 @@ export const StatisticsController = {
     Calculate to the closest value greater than 1, how many people departure every x days
     */
 
-    async all(req: Request, res: Response) {
+    async all(_req: Request, res: Response) {
         try {
             const departures: IDepartureRecord[] = await DepartureController.fetchDepartures();
             const stats = await getAllStats(departures);
@@ -179,7 +177,7 @@ export const StatisticsController = {
         }
     },
 
-    async perDayStr(req: Request, res: Response) {
+    async perDayStr(_req: Request, res: Response) {
         try {
             const departures: IDepartureRecord[] = await DepartureController.fetchDepartures();
             const stats = calcPerDayStr(departures);
@@ -196,7 +194,7 @@ export const StatisticsController = {
     {'DepartmentName': numDepartures}
     */
 
-    async affStats(req: Request, res: Response) {
+    async affStats(_req: Request, res: Response) {
         try {
             const departures: IDepartureRecord[] = await DepartureController.fetchDepartures();
             const stats = await calcAffStats(true, departures);
@@ -213,7 +211,7 @@ export const StatisticsController = {
     {'LeaveType': numDepartures}
     */
 
-    async leaveTypes(req: Request, res: Response) {
+    async leaveTypes(_req: Request, res: Response) {
         try {
             const departures: IDepartureRecord[] = await DepartureController.fetchDepartures();
             const stats = calcLeaveTypes(true, departures);
@@ -229,7 +227,7 @@ export const StatisticsController = {
     Calculate the average time in days any employee has lasted while trump is in office
     */
 
-    async avgTrumpTime(req: Request, res: Response) {
+    async avgTrumpTime(_req: Request, res: Response) {
         try {
             const departures: IDepartureRecord[] = await DepartureController.fetchDepartures();
             const stats = calcAverage(departures);
@@ -245,7 +243,7 @@ export const StatisticsController = {
     The same as avgTrumpTime, but only with those hired the day of or after his inauguration
     */
 
-    async avgTrumpHireTime(req: Request, res: Response) {
+    async avgTrumpHireTime(_req: Request, res: Response) {
         try {
             const departures: IDepartureRecord[] = await DepartureController.fetchDepartures();
             const filtered = departures.filter((departure) => {
@@ -265,7 +263,7 @@ export const StatisticsController = {
     The same as avgTrumpTime, but only with those hired before Trump took office
     */
 
-    async avgRolloverTime(req: Request, res: Response) {
+    async avgRolloverTime(_req: Request, res: Response) {
         try {
             const departures: IDepartureRecord[] = await DepartureController.fetchDepartures();
             const filtered = departures.filter((departure) => {

@@ -17,7 +17,7 @@ const getDefinitionsFromCache = async () => {
 };
 
 export const DefinitionController = {
-    async list(req: Request, res: Response) {
+    async list(_req: Request, res: Response) {
         try {
             const records = await getDefinitionsFromCache();
             res.status(200).json(records);

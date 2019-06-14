@@ -29,7 +29,7 @@ router.get(routes.AVG_ROLLOVER_TIME, StatisticsController.avgRolloverTime);
 router.get(routes.IMAGES, ImageController.sendImage);
 
 // HTML5 routing
-router.get("*", (req, res) => {
+router.get("*", (_req, res) => {
     res.sendFile("index.html", { root: `${__dirname}/../public/` });
 });
 
