@@ -9,11 +9,8 @@
 
 ```bash
 $> git clone https://github.com/dekoding/45-chaos-stats
-$> cd 45-chaos-stats/ui
-$> npm install # install front-end dependencies
-$> cd ../
-$> npm install # install back-end dependencies
-$> npm start # runs tsc and tslint, then starts the web server
+$> cd 45-chaos-stats/
+$> npm start # Builds back-end and front-end, then starts
 ```
 ### Routes
 
