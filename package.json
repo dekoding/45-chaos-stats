@@ -7,8 +7,9 @@
         "frontend": "cd ui && npm install && ng build --prod=true",
         "prebuild": "npm install && tslint -c tslint.json -p tsconfig.json --fix",
         "build": "tsc && npm run frontend",
-        "prestart": "npm run build",
+        "prestart:build": "npm run build",
         "start": "node .",
+        "start:build": "node .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
